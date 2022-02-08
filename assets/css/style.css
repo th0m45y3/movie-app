@@ -1,24 +1,28 @@
 :root {
     --main-color: #000000;
     --color-grey: rgb(196, 196, 196);
+    --color-white: #ffffff;
+    --grid-rows: 1;
 }
 @font-face { 
     font-family: "Comforter"; 
     src: url(../fonts/Comforter-Regular.ttf);
 } 
 
-*:not(#nav-wrapper) {
-    /* border: red solid 2px; */
-}
+/* *:not(#nav-wrapper) {
+    border: red solid 2px;
+} */
 *::-webkit-scrollbar {
     display: none;
 }
 body {
-    background-color: rgba(196, 196, 196, 0.5);
+    background-color: var(--main-color);
     padding: 200px 40px;
-    color: var(--color-grey);
+    color: var(--color-white);
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: 400;
+    font-size: 24pt;
 }
-
 #nav {
     position: fixed;
     top: 0;
@@ -61,24 +65,57 @@ h1 {
     padding-left: 20px;
     color: var(--color-grey);
 }
+
+#big-table {
+    display: table;
+}
 .card {
-   display: grid;
-   width: 100%;
-   grid-template-columns: 2fr 1fr;
-   grid-template-areas:
-       "info info poster";
+    display: inline-grid;
+    width: 100%;
+    grid-template-columns: 2fr 1fr;
     grid-gap: 0;
-    background-color: rgb(255, 255, 255, 0.3);
+    background-color: rgba(196, 196, 196, 0.3);
+}
+.card:not(:last-child) {
+    border-bottom: var(--main-color) 2px dashed;
 }
 
-.poster-image {
+#card-end {
+    display: inline-grid;
+    grid-template-columns: 2fr 1fr;
+    grid-gap: 0;
+    width: 100%;
+    transform: rotateX(180deg);
+}
+#card-begin {
+    display: inline-grid;
+    grid-template-columns: 2fr 1fr;
+    grid-gap: 0;
+    width: 100%;
+}
+#first-info {
+    text-align: center;
+}
+.first-image {
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 100%;
+}
+
+.info {
+    padding: 0 20px;
+}
+
+.poster{
+    margin-right:30px;
+}
+.poster-image{
     background-image: url(https://image.tmdb.org/t/p/original/wigZBAmNrIhxp2FNGOROUAeHvdh.jpg);
     background-size: contain;
     background-position: center;
     background-repeat: no-repeat;
-    width: 500px;
-}
-.info {
+    width: 100%;
 }
 
 #video-bg {
@@ -89,4 +126,10 @@ h1 {
     min-height: 100%;
     z-index: -10;
     opacity: 0.2;
+}
+#error-message {
+    text-align: center;
+}
+.hidden {
+    opacity: 0;
 }
