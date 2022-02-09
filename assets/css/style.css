@@ -68,6 +68,8 @@ h1 {
 
 #big-table {
     display: table;
+    width: 1200px;
+    margin: 0 auto;
 }
 .card {
     display: inline-grid;
@@ -75,6 +77,15 @@ h1 {
     grid-template-columns: 2fr 1fr;
     grid-gap: 0;
     background-color: rgba(196, 196, 196, 0.3);
+    /* min-height: 0; */
+}
+.card.full {
+    grid-auto-rows: 452px;
+
+}
+.card.full :nth-child(1) {
+    overflow-y:auto;
+
 }
 .card:not(:last-child) {
     border-bottom: var(--main-color) 2px dashed;
@@ -106,6 +117,10 @@ h1 {
 .info {
     padding: 0 20px;
 }
+tbody .info {
+    overflow-y: scroll;
+    height: 452px;
+}
 
 .poster{
     margin-right:30px;
@@ -123,6 +138,7 @@ h1 {
     background-position: center;
     background-repeat: no-repeat;
     width: 100%;
+    transition: 0.3s;
 }
 
 #video-bg {
