@@ -17,4 +17,4 @@ search.onkeydown = function(e){
         search.value ? funs.getData(queryUrl, {'query':search.value}) : funs.getData(topUrl);
         return;
     }
-  }
+}

@@ -4,7 +4,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./assets/css/style.css">
-    <link rel="preload" href="assets/video/load.gif" as="image">
+    <link rel="preload" href="./assets/video/load.gif" as="image">
+    <link rel="icon" href="./assets/svg/icons.svg">
     <title>movie app</title>
 </head>
 <body>
@@ -33,12 +34,27 @@
         
         <h2 id="loading-message">LOADING...</h2>
 
+       
+
         <div id="big-table"  class='hidden'>
     <tr>
             <div class="card" id="card-begin">
                 <div class="info" id="first-info"> TOP RATED MOVIES </div>
                 <div class="poster">
+                    <div class="pages" id="page-host" data-url="" data-params="">
+                        <span class="page">1</span>
+                        <span class="page">2</span>
+                        <span class="page">3</span>
+                        <span class="page">4</span>
+                        <span class="page">5</span>
+                        <span class="page">6</span>
+                        <span class="page">7</span>
+                        <span class="page">8</span>
+                        <span class="page">9</span>
+                        <span class="page">10</span>
+                    </div>
                     <img class="first-image" src="./assets/img/clip-begin.png" alt="kek">
+                    
                 </div>
             </div>
     </tr>
@@ -531,9 +547,21 @@
 
     <tr>
         <div class="card" id="card-end">
-            <div class="info" id="first-info"> </div>
+            <a class="info" id="last-info" href="#"> SCROLL UP </a>
             <div class="poster">
                 <img class="first-image" src="./assets/img/clip-begin.png" alt="kek">
+                <div class="pages reversed">
+                    <span class="page" id="duplicate-0">1</span>
+                    <span class="page" id="duplicate-1">2</span>
+                    <span class="page" id="duplicate-2">3</span>
+                    <span class="page" id="duplicate-3">4</span>
+                    <span class="page" id="duplicate-4">5</span>
+                    <span class="page" id="duplicate-5">6</span>
+                    <span class="page" id="duplicate-6">7</span>
+                    <span class="page" id="duplicate-7">8</span>
+                    <span class="page" id="duplicate-8">9</span>
+                    <span class="page" id="duplicate-9">10</span>
+                </div>
             </div>
         </div>
     </tr>
