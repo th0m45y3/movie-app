@@ -14,7 +14,7 @@ search.onkeydown = function(e){
     if (!e) e = window.event;
     var keyCode = e.code || e.key;
     if (keyCode == 'Enter' || keyCode == 'NumpadEnter'){
-        funs.getData(queryUrl, {'query':search.value});
-        return false;
+        search.value ? funs.getData(queryUrl, {'query':search.value}) : funs.getData(topUrl);
+        return;
     }
   }

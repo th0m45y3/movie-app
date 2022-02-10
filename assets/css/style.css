@@ -17,11 +17,11 @@
 }
 body {
     background-color: var(--main-color);
-    padding: 200px 40px;
+    padding: 200px 0px;
     color: var(--color-white);
     font-family: 'Courier New', Courier, monospace;
     font-weight: 400;
-    font-size: 24pt;
+    font-size: 15pt;
 }
 #nav {
     position: fixed;
@@ -36,6 +36,7 @@ body {
     grid-gap: 0;
     align-items: center;
     background-color: rgba(196, 196, 196, 0.5);
+    z-index: 100;
 }
 .nav.wrapper {
     height: 30px;
@@ -114,12 +115,21 @@ h1 {
     width: 100%;
 }
 
-.info {
-    padding: 0 20px;
+/* .info :not(:last-child) {
+    padding: 20px 20px;
+} */
+
+.info div, .info h2 {
+    text-align: center;
+    padding: 0;
+    margin: 40px;
 }
-tbody .info {
-    overflow-y: scroll;
-    height: 452px;
+.overview {
+    margin: 0 30px;
+    text-align: justify;
+    text-justify: inter-word;
+    /* overflow-y: scroll;
+    height: 452px; */
 }
 
 .poster{
@@ -134,7 +144,7 @@ tbody .info {
 }
 .poster-image{
     background-image: url(../video/load.gif);
-    background-size: contain;
+    background-size: 300px 452px;
     background-position: center;
     background-repeat: no-repeat;
     width: 100%;
@@ -150,9 +160,18 @@ tbody .info {
     z-index: -10;
     opacity: 0.2;
 }
-#error-message {
+#error-message, #loading-message {
     text-align: center;
 }
 .hidden {
     opacity: 0;
+}
+
+.filtered {
+    filter: blur(0.05em) saturate(1.7) contrast(1.5) brightness(0.8) grayscale(0.8);
+    transition: 0.3s;
+    
+}
+.filtered:hover {
+    filter: none;
 }
