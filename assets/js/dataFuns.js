@@ -10,13 +10,10 @@ export async function getData(url, params={'page':1}) {
         const res = await fetch(url + combineQueryParams(params));
         const data = await res.json();
 
-        var pagedParams = params;
-
-        // console.log(pagedParams);
         if (!params.page) params.page = 1;
         setPages( url, params, data.total_pages, data.total_results);
 
-        displayResults(data.results);
+        displayResults(data.results, data.total_pages);
       } catch (err) {
         showError();
         throw err;
@@ -49,14 +46,22 @@ function showLoading() {
 
 function setPages(url, params, pages, total) {
     document.getElementById('first-info').innerHTML = url === topUrl ? 'TOP RATED MOVIES' : `${total} RESULTS`;
-    const currentPage = params.page;
-    console.log(pages);
-    console.log(currentPage);
+    const currentPage = Number(params.page);
     const host = document.getElementById('page-host');
     host.dataset.url = url;
     host.dataset.params = params.query;
 
     table.querySelectorAll('#page-host .page').forEach( function(item, index) {
+        
+    if(pages < 10) {
+        item.innerHTML = index + 1;
+        document.getElementById(`duplicate-${index}`).innerHTML = index + 1;
+        if(index + 1 > pages) {
+            item.classList.add('hidden');
+            document.getElementById(`duplicate-${index}`).classList.add('hidden');
+        }
+
+    } else {
         if(index === 0) {
             if(currentPage === 1) {
                 item.innerHTML = pages;
@@ -66,14 +71,19 @@ function setPages(url, params, pages, total) {
                 document.getElementById(`duplicate-${index}`).innerHTML =  currentPage - 1;
                 } 
         } else {
-            var forward = currentPage + index > pages ? pages - currentPage + index : currentPage + index;
+            var forward = currentPage + index;
+            if (forward > pages) { 
+                forward = forward - pages;
+            }
             item.innerHTML = forward;
             document.getElementById(`duplicate-${index}`).innerHTML = forward;
             }
+        table.querySelectorAll('.page').forEach(el => el.classList.remove('hidden'));
+    }
     });
 }
 
-function displayResults(data) {
+function displayResults(data, total_pages) {
     reset();
     for(var res in data) {
         var currentItem = document.getElementById(`card-${res}`);
@@ -85,7 +95,9 @@ function displayResults(data) {
         currentItem.style.display = 'inline-grid';
     }
     showTable();
-    if (data.length < 20) makeRows(data.length);
+    console.log(total_pages);
+    if (total_pages < 2) hidePages;
+    if (data.length < 20) hideRows(data.length);
     table.querySelectorAll('.poster-image').forEach(function(card, index ){
         if (index <= res) {
             const img = new Image();
@@ -97,11 +109,15 @@ function displayResults(data) {
 }
 
 
-function makeRows(rows) {
+function hideRows(rows) {
     const items = table.querySelectorAll('.card.full');
     for (let i = 0; i < 20 - rows; i++) {
         items[19 - i].style.display = 'none';
+        console.log(items[19-i]);
     }
+}
+
+function hidePages() {
     table.querySelectorAll('.pages').forEach( x => x.classList.add('hidden'));
 }
 
