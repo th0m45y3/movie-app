@@ -1,2 +1,2 @@
-# th0m45y3-JSFEPRESCHOOL
-Private repository for @th0m45y3
+# Task
+Create an application that allow the users to find movies from the movie database using API.
