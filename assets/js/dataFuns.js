@@ -12,8 +12,8 @@ export async function getData(url, params={'page':1}) {
 
         if (!params.page) params.page = 1;
         setPages( url, params, data.total_pages, data.total_results);
-
         displayResults(data.results, data.total_pages);
+
       } catch (err) {
         showError();
         throw err;
@@ -95,7 +95,6 @@ function displayResults(data, total_pages) {
         currentItem.style.display = 'inline-grid';
     }
     showTable();
-    console.log(total_pages);
     if (total_pages < 2) hidePages;
     if (data.length < 20) hideRows(data.length);
     table.querySelectorAll('.poster-image').forEach(function(card, index ){
@@ -113,7 +112,6 @@ function hideRows(rows) {
     const items = table.querySelectorAll('.card.full');
     for (let i = 0; i < 20 - rows; i++) {
         items[19 - i].style.display = 'none';
-        console.log(items[19-i]);
     }
 }
 
