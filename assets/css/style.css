@@ -63,14 +63,17 @@ h1 {
         grid-template-columns: 1fr;
     }
     #big-table {
-        width: 100vw;
+        width: 100%;
         margin: 0;
         padding: 0;
     }
-    #card {
-        width: 100px;
+    .card {
+        width: 100%;
         grid-template-columns: repeat(1, 1fr);
-        grid-template-rows: repeat(2, 1fr);
+        grid-template-rows: repeat(2, 500px);
+    }
+    .poster {
+        width: 100%;
     }
     body {
         font-size: 25pt;
@@ -234,24 +237,33 @@ h1 {
     position: static;
     bottom: 0;
     width: 1200px;
-    height: 60px;
+    height: 100px;
     z-index: 100;
-    padding: 90px auto 20px auto;
+    margin: 90px auto 0px auto;
+    display: flex;
+    justify-content: center;
     align-items: center;
     text-align: center;
+    flex-direction: column;
 }
-#foot h3 {
-    height: 100%;
+#foot h3{
     color:var(--color-white);
     font-size: 30pt;
     font-family: "Comforter"; 
     font-weight: 200;
-    /* margin: 0 70px 0 40px;  */
 }
-#foot a {
+#foot a{
+    
+    margin: 0 50px;
+}
+#icons {
     text-decoration: none;
-    display: inline-flex;
     margin: 40px;
+    height: 100%;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
 }
 .stroke{
     transition: .3s;
